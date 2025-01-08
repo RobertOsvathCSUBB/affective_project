@@ -9,7 +9,7 @@ This repository provides a framework to conduct experiments on facial emotion re
 - The attention mechanism is incorporated using spatial transformer networks.
 
 <p align="center">
-  <img src="imgage/net_arch.PNG" width="960" title="Deep-Emotion Architecture">
+  <img src="image/net_arch.PNG" width="960" title="Deep-Emotion Architecture">
 </p>
 
 ## Datasets
