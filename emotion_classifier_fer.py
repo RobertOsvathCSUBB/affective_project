@@ -157,4 +157,4 @@ class EmotionClassifier(L.LightningModule):
     def forward(self, x):
         return self.model(x)
     
-emotion_classifier = EmotionClassifier.load_from_checkpoint("epoch=129-step=58370.ckpt")
+emotion_classifier = EmotionClassifier.load_from_checkpoint("fer_train.ckpt")

@@ -1,22 +1,32 @@
 # the first one is the model trained on FER2013
-from emotion_classifier_fer import emotion_classifier
+# from emotion_classifier_fer import emotion_classifier
+# the second one is the model trained on CK+
+from emotion_classifier_ck import emotion_classifier
 import cv2
 import torch
 import torchvision.transforms.v2 as T
 from PIL import Image
 import time
+import csv
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+# results_file = "experiment_results_fer.csv"
+results_file = "experiment_results_ck.csv"
+
 transformation = T.Compose([
     T.ToImage(),
+    T.Resize((48,48)),
     T.ToDtype(torch.float32),
     T.Lambda(lambda x: x / 255.),
     T.Normalize(mean=[0.5], std=[0.5])
 ])
 
-#Model Evaluation on test data
-classes = ('Angry', 'Disgust', 'Fear', 'Happy','Sad', 'Surprise', 'Neutral')
+# classes for FER2013
+# classes = ('Angry', 'Disgust', 'Fear', 'Happy','Sad', 'Surprise', 'Neutral')
+
+# classes for CK+
+classes = ('Anger', 'Contempt', 'Disgust', 'Fear', 'Happiness', 'Sadness', 'Surprise')
 
 #helper_function for real time testing
 def load_img(path):
@@ -27,6 +37,8 @@ def load_img(path):
     return img.to(device)
 
 if __name__ == "__main__":
+    # Initialize a list to store the emotions
+    emotions = []
 
     # Load the face cascade
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -58,6 +70,7 @@ if __name__ == "__main__":
         output = emotion_classifier(img)
         prediction = torch.argmax(output["probs"])
         predicted_class = classes[prediction.item()]
+        emotions.append(predicted_class)
 
         # Display the frame
         font = cv2.FONT_HERSHEY_SIMPLEX
@@ -77,3 +90,11 @@ if __name__ == "__main__":
 
     # Release the VideoCapture object
     cap.release()
+
+    # Destroy all windows
+    cv2.destroyAllWindows()
+
+    # Write the emotions to a CSV file
+    with open('experiment_results.csv', mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(emotions)
