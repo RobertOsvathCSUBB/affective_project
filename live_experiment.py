@@ -1,7 +1,12 @@
 # the first one is the model trained on FER2013
 # from emotion_classifier_fer import emotion_classifier
+
 # the second one is the model trained on CK+
-from emotion_classifier_ck import emotion_classifier
+# from emotion_classifier_ck import emotion_classifier
+
+# the third one is the model trained on FER2013 without disgust and surprise emotions
+from emotion_classifier_fer_v2 import emotion_classifier
+
 import cv2
 import torch
 import torchvision.transforms.v2 as T
@@ -23,10 +28,10 @@ transformation = T.Compose([
 ])
 
 # classes for FER2013
-# classes = ('Angry', 'Disgust', 'Fear', 'Happy','Sad', 'Surprise', 'Neutral')
+classes = ('Angry', 'Disgust', 'Fear', 'Happy','Sad', 'Surprise', 'Neutral')
 
 # classes for CK+
-classes = ('Anger', 'Contempt', 'Disgust', 'Fear', 'Happiness', 'Sadness', 'Surprise')
+# classes = ('Anger', 'Contempt', 'Disgust', 'Fear', 'Happiness', 'Sadness', 'Surprise')
 
 #helper_function for real time testing
 def load_img(path):
