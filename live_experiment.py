@@ -33,6 +33,9 @@ classes = ('Angry', 'Disgust', 'Fear', 'Happy','Sad', 'Surprise', 'Neutral')
 # classes for CK+
 # classes = ('Anger', 'Contempt', 'Disgust', 'Fear', 'Happiness', 'Sadness', 'Surprise')
 
+# classes for the reduced FER2013 without disgust and surprise
+# classes = ('Angry', 'Fear', 'Happy','Sad', 'Neutral')
+
 #helper_function for real time testing
 def load_img(path):
     img = Image.open(path)
