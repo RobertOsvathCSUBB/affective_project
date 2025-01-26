@@ -1,6 +1,8 @@
 # Deep-Emotion For Facial Expression Recognition During Gambling Experiments
 
-This repository provides a framework to conduct experiments on facial emotion recognition during gambling with the aim of building an emotional model of gambling. The used model is an implementation of the research paper [Deep-Emotion](https://arxiv.org/abs/1902.01019). The code and visualization technique is heavily based on [this](https://github.com/omarsayed7/Deep-Emotion) repository.
+This repository provides a framework to conduct experiments on facial emotion recognition during gambling with the aim of building an emotional model of gambling for an experimental research project, for my subject of Affective Computing.
+
+The used model is an implementation of the research paper [Deep-Emotion](https://arxiv.org/abs/1902.01019). The code and visualization technique is based on [this](https://github.com/omarsayed7/Deep-Emotion) repository.
 
 **Note**: This implementation is not the official one described in the paper.
 
